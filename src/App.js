@@ -3,6 +3,8 @@ import './App.css';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import AdminPage from './pages/AdminPage';
+import DetailPage from './pages/DetailPage';
+import AcceptancePage from './pages/AcceptancePage';
 import { Route, Routes } from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute';
 import ProtectedLogin from './components/ProtectedLogin';
@@ -18,6 +20,8 @@ function App() {
           </ProtectedRoute>
         }>
           <Route index={true} element={<HomePage />} />
+          <Route path='/acceptance' element={<AcceptancePage />} />
+          <Route path='package/:id' element={<DetailPage />} />
         </Route>
         <Route path='/login' element={
           <ProtectedLogin>
