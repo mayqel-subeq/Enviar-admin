@@ -25,6 +25,7 @@ export default function LoginPage() {
             })
             // console.log(response.data);
             localStorage.setItem("access_token", response.data.access_token)
+            localStorage.setItem("role", response.data.role)
             navigate('/')
         }
         catch (err) {

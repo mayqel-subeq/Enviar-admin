@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import AdminPage from './pages/AdminPage';
 import DetailPage from './pages/DetailPage';
 import AcceptancePage from './pages/AcceptancePage';
+import EmployeePage from './pages/EmployeePage';
 import { Route, Routes } from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute';
 import ProtectedLogin from './components/ProtectedLogin';
@@ -22,6 +23,7 @@ function App() {
           <Route index={true} element={<HomePage />} />
           <Route path='/acceptance' element={<AcceptancePage />} />
           <Route path='package/:id' element={<DetailPage />} />
+          <Route path='/employee' element={<EmployeePage />} />
         </Route>
         <Route path='/login' element={
           <ProtectedLogin>
