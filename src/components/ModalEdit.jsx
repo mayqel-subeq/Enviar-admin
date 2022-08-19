@@ -19,7 +19,7 @@ export default function ModalEdit({ show, setShow, data, setData, getAll }) {
     const handleSubmit = async () => {
         // console.log(data);
         try {
-            const response = await axios.put(`http://localhost:3000/editEmployee/${data.id}`, {
+            const response = await axios.put(`https://enviar-be.herokuapp.com/editEmployee/${data.id}`, {
                 firstname: data.firstname,
                 lastname: data.lastname,
                 phoneNumber: data.phoneNumber

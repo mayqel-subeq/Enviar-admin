@@ -11,12 +11,12 @@ export default function DetailPage() {
     const [storeDet, setStoreDet] = useState(0)
     const getDetail = async () => {
         try {
-            const getStatus = await axios.get(`http://localhost:3000/store`, {
+            const getStatus = await axios.get(`https://enviar-be.herokuapp.com/store`, {
                 headers: {
                     'access_token': localStorage.getItem('access_token')
                 }
             })
-            const response = await axios.get(`http://localhost:3000/status/${id}`, {
+            const response = await axios.get(`https://enviar-be.herokuapp.com/status/${id}`, {
                 headers: {
                     'access_token': localStorage.getItem('access_token')
                 }
@@ -41,7 +41,7 @@ export default function DetailPage() {
                 throw new Error(`please fill all the field`)
             }
 
-            const response = await axios.post(`http://localhost:3000/status`, {
+            const response = await axios.post(`https://enviar-be.herokuapp.com/status`, {
                 ProductId: detail.Product.id,
                 CityId: storeDet,
                 notes: status

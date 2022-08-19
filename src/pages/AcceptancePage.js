@@ -1,6 +1,8 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import axios from "axios"
 export default function AcceptancePage() {
+    const navigate = useNavigate()
     const [total, setTotal] = useState([{ receipt: '' }])
     const addTotal = (e) => {
         e.preventDefault()
@@ -9,7 +11,7 @@ export default function AcceptancePage() {
 
     const addDb = async () => {
         try {
-            const response = await axios.post(`http://localhost:3000/acceptance`, {
+            const response = await axios.post(`https://enviar-be.herokuapp.com/acceptance`, {
                 receiptNumber: total
             }, {
                 headers: {
@@ -17,7 +19,8 @@ export default function AcceptancePage() {
                 }
             })
             console.log(response.data);
-
+            console.log(`sukses`);
+            navigate("/")
         }
         catch (err) {
             console.log(err);

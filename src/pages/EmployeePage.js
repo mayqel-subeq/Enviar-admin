@@ -11,7 +11,7 @@ export default function EmployeePage() {
     const [showModal, setShowModal] = useState(false)
     const getEmployee = async () => {
         try {
-            const response = await axios.get(`http://localhost:3000/getEmployee`, {
+            const response = await axios.get(`https://enviar-be.herokuapp.com/getEmployee`, {
                 headers: {
                     access_token: localStorage.getItem("access_token")
                 }
@@ -27,7 +27,7 @@ export default function EmployeePage() {
 
     const deleteEmployee = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:3000/deleteEmployee/${id}`, {
+            const response = await axios.delete(`https://enviar-be.herokuapp.com/deleteEmployee/${id}`, {
                 headers: {
                     access_token: localStorage.getItem("access_token")
                 }
@@ -43,7 +43,7 @@ export default function EmployeePage() {
 
     const getEmployeeById = async (id) => {
         try {
-            const response = await axios.get(`http://localhost:3000/getEmployeeId/${id}`, {
+            const response = await axios.get(`https://enviar-be.herokuapp.com/getEmployeeId/${id}`, {
                 headers: {
                     access_token: localStorage.getItem("access_token")
                 }

@@ -19,7 +19,7 @@ export default function LoginPage() {
 
     const handleLogin = async (e) => {
         try {
-            const response = await axios.post(`http://localhost:3000/login`, {
+            const response = await axios.post(`https://enviar-be.herokuapp.com/login`, {
                 email: inputFormUser.email,
                 password: inputFormUser.password
             })
