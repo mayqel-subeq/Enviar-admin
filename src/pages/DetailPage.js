@@ -34,8 +34,7 @@ export default function DetailPage() {
 
     const addStatus = async (e) => {
         e.preventDefault()
-        // console.log(storeDet);
-        // console.log(status);
+       
         try {
             if (storeDet === 0 || status === `noStatus`) {
                 throw new Error(`please fill all the field`)
@@ -50,7 +49,7 @@ export default function DetailPage() {
                     'access_token': localStorage.getItem('access_token')
                 }
             })
-            // console.log(response.data);
+           
             navigate('/')
         }
         catch (err) {
