@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import NavbarComponent from "../components/NavbarComponent"
 import HomeTableComponent from "../components/HomeTableComponent"
+import Swal from "sweetalert2"
 export default function HomePage() {
     const [loading, setLoading] = useState(true)
     const [listPackage, setListPackage] = useState([])
@@ -21,7 +22,11 @@ export default function HomePage() {
             setLoading(false)
         }
         catch (err) {
-            console.log(err);
+            Swal.fire(
+                'Error',
+                `Server down, try again later`,
+                'error'
+              )
         }
 
     }

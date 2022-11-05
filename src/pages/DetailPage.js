@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import Swal from "sweetalert2";
+
 export default function DetailPage() {
     const { id } = useParams()
     const navigate = useNavigate()
@@ -28,7 +30,11 @@ export default function DetailPage() {
             setDetail(response.data.data)
         }
         catch (err) {
-            console.log(err);
+            Swal.fire(
+                'Error',
+                `Server down, try again later`,
+                'error'
+              )
         }
     }
 
@@ -49,11 +55,20 @@ export default function DetailPage() {
                     'access_token': localStorage.getItem('access_token')
                 }
             })
-           
+            Swal.fire(
+                'Success',
+                'Success update data',
+                'success'
+              )
             navigate('/')
         }
         catch (err) {
             console.log(err);
+            Swal.fire(
+                'Error',
+                `${err}`,
+                'error'
+              )
         }
     }
 
