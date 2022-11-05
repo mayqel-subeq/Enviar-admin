@@ -21,9 +21,9 @@ export default function DetailPage() {
                     'access_token': localStorage.getItem('access_token')
                 }
             })
-            // console.log(response.data);
+       
             setStore(getStatus.data.data)
-            // console.log(getStatus.data.data);
+      
             setDestination(response.data.destination)
             setDetail(response.data.data)
         }
