@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom';
 import axios from "axios"
+import Swal from "sweetalert2";
 
 export default function LoginPage() {
     const navigate = useNavigate()
@@ -29,7 +30,12 @@ export default function LoginPage() {
             navigate('/')
         }
         catch (err) {
-            console.log(err.response.data.error.message);
+            Swal.fire(
+                'Error',
+                `${err.response.data.error.message}`,
+                'error'
+              )
+           
         }
         finally {
             setInputFormUser({

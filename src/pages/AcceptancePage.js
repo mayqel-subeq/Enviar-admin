@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import Swal from "sweetalert2"
 export default function AcceptancePage() {
     const navigate = useNavigate()
     const [total, setTotal] = useState([{ receipt: '' }])
@@ -18,18 +19,24 @@ export default function AcceptancePage() {
                     access_token: localStorage.getItem('access_token')
                 }
             })
-            console.log(response.data);
-            console.log(`sukses`);
+            Swal.fire(
+                'Success',
+                `Success Update Data`,
+                'success'
+              )
             navigate("/")
         }
         catch (err) {
-            console.log(err);
+            Swal.fire(
+                'Error',
+                `${err.response.data.error.message}`,
+                'error'
+              )
         }
     }
 
     const handleAdd = (e) => {
         e.preventDefault()
-        // console.log(total);
         addDb()
     }
 
@@ -55,7 +62,7 @@ export default function AcceptancePage() {
                         return (
                             <>
                                 <input onChange={(e) => handleInputChange(e, number)} name="receipt" className="border border-1" placeholder="Receipt Number" />
-                                {total.length > 1 ? <p onClick={(e) => handleDelete(e, number)}>delete</p> : null}
+                                {total.length > 1 ? <p style={{cursor: "pointer"}} onClick={(e) => handleDelete(e, number)}>delete</p> : null}
                                 <br />
 
                             </>

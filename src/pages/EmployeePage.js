@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import axios from 'axios'
 import EmployeeTableComponent from "../components/EmployeeTableComponent"
 import ModalEdit from "../components/ModalEdit"
+import Swal from "sweetalert2";
 
 export default function EmployeePage() {
 
@@ -21,7 +22,11 @@ export default function EmployeePage() {
             setLoading(false)
         }
         catch (err) {
-            console.log(err);
+            Swal.fire(
+                'Error',
+                `Server down, try again later`,
+                'error'
+              )
         }
     }
 
@@ -32,12 +37,14 @@ export default function EmployeePage() {
                     access_token: localStorage.getItem("access_token")
                 }
             })
-
-            console.log(response.data.message);
             getEmployee()
         }
         catch (err) {
-            console.log(err);
+            Swal.fire(
+                'Error',
+                `${err.response.data.error.message}`,
+                'error'
+              )
         }
     }
 
@@ -48,7 +55,6 @@ export default function EmployeePage() {
                     access_token: localStorage.getItem("access_token")
                 }
             })
-            console.log(response.data);
             setEmplo(response.data)
             if (emplo.firstname) {
                 setShowModal(true)
@@ -56,7 +62,11 @@ export default function EmployeePage() {
             }
         }
         catch (err) {
-            console.log(err);
+            Swal.fire(
+                'Error',
+                `Server down, try again later`,
+                'error'
+              )
         }
     }
 

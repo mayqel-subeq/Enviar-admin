@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import Swal from "sweetalert2";
+
 export default function DetailPage() {
     const { id } = useParams()
     const navigate = useNavigate()
@@ -21,21 +23,24 @@ export default function DetailPage() {
                     'access_token': localStorage.getItem('access_token')
                 }
             })
-            // console.log(response.data);
+       
             setStore(getStatus.data.data)
-            // console.log(getStatus.data.data);
+      
             setDestination(response.data.destination)
             setDetail(response.data.data)
         }
         catch (err) {
-            console.log(err);
+            Swal.fire(
+                'Error',
+                `Server down, try again later`,
+                'error'
+              )
         }
     }
 
     const addStatus = async (e) => {
         e.preventDefault()
-        // console.log(storeDet);
-        // console.log(status);
+       
         try {
             if (storeDet === 0 || status === `noStatus`) {
                 throw new Error(`please fill all the field`)
@@ -50,11 +55,20 @@ export default function DetailPage() {
                     'access_token': localStorage.getItem('access_token')
                 }
             })
-            // console.log(response.data);
+            Swal.fire(
+                'Success',
+                'Success update data',
+                'success'
+              )
             navigate('/')
         }
         catch (err) {
             console.log(err);
+            Swal.fire(
+                'Error',
+                `${err}`,
+                'error'
+              )
         }
     }
 
