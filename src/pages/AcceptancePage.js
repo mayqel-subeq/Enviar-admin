@@ -18,8 +18,7 @@ export default function AcceptancePage() {
                     access_token: localStorage.getItem('access_token')
                 }
             })
-            console.log(response.data);
-            console.log(`sukses`);
+            
             navigate("/")
         }
         catch (err) {
